@@ -5,7 +5,11 @@ const configMensaje = require('./configMensaje');
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+
+app.use(cors({
+  origin: ['http://localhost:4200','http://maestriacc.fi.uncoma.edu.ar:3000', 'http://localhost:3000'],
+  credentials:true
+}));
 
 app.post('/titulo/formulario', (req, res) => {
   configMensaje(req.body);
