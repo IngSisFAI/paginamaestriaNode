@@ -8,7 +8,15 @@ const app = express();
 
 // Tell the app to parse the body of the request
 app.use(bodyParser.json());
+<<<<<<< HEAD:app.js
 app.use(bodyParser.urlencoded({ extended: false }));
+=======
+
+app.use(cors({
+  origin: ['http://localhost:4200','http://maestriacc.fi.uncoma.edu.ar:3000', 'http://localhost:3000'],
+  credentials:true
+}));
+>>>>>>> master:nodejs/app.js
 
 /*
 app.use(function(req,res,next){
