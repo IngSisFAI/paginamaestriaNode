@@ -24,7 +24,9 @@ module.exports = (formulario) => {
     <strong>Dni:</strong> ${formulario.doc}  <br/>
     <strong>Telefono:</strong> ${formulario.numero}  <br/>
     <strong>Genero:</strong> ${formulario.gender}  <br/>
-    <strong>Nacionalidad:</strong> ${formulario.nacionalidad}
+    <strong>Nacionalidad:</strong> ${formulario.nacionalidad}<br/>
+    <strong>Nombre de su carrera:</strong> ${formulario.carrera}<br/>
+     <strong>Nombre de su universidad:</strong> ${formulario.universidad}
     `
     };
 

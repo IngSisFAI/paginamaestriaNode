@@ -8,15 +8,25 @@ const app = express();
 
 // Tell the app to parse the body of the request
 app.use(bodyParser.json());
-<<<<<<< HEAD:app.js
-app.use(bodyParser.urlencoded({ extended: false }));
-=======
+app.use(bodyParser.urlencoded({extended: false}));
 
-app.use(cors({
-  origin: ['http://localhost:4200','http://maestriacc.fi.uncoma.edu.ar:3000', 'http://localhost:3000'],
-  credentials:true
-}));
->>>>>>> master:nodejs/app.js
+
+
+/*
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+
+    next();
+});
+*/
+
+
+module.exports = app;
 
 /*
 app.use(function(req,res,next){
@@ -27,21 +37,22 @@ app.use(function(req,res,next){
 })*/
 
 
+/*
 console.log('entro a cors?');
-
+*/
 // Setting up the cors config
 app.use(cors({
   origin: ['http://maestriacc.fi.uncoma.edu.ar:3000/titulo/formulario', 'http://maestriacc.fi.uncoma.edu.ar:3000', 'http://localhost:3000', 'http://localhost:4200'],
   methods : ['GET', 'POST', 'OPTIONS'],
   credentials:true
 }));
-
+/*
 console.log('despues de cors');
 
 
 /* solucion a problema de cors que resulto por poco tiempo */
-
 /*
+
 app.use(cors({
   origin: ['http://maestriacc.fi.uncoma.edu.ar', 'http://maestriacc.fi.uncoma.edu.ar:3000', 'http://localhost:3000'],
   credentials:true
@@ -68,11 +79,11 @@ app.post('/formularionuevo/formulario', (req, res) => {
 
 console.log('antes de app.post titulo/formulario')
 
-app.post('http://maestriacc.fi.uncoma.edu.ar:3000/titulo/formulario', (req, res) => {
-  configMensaje(req.body);
-  res.status(200).send();
+app.post('/titulo/formulario', (req, res) => {
+    configMensaje(req.body);
+    res.status(200).send();
 
-  console.log('adentro de app.post titulo');
+    console.log('adentro de app.post titulo');
 
 })
 
@@ -118,9 +129,8 @@ app.post('/subscribe', (req, res) => {
 */
 
 
-
 const puerto = '3000';
 /* puerto que escucha */
 app.listen(puerto, () => {
-  console.log('Servidor corriendo en puerto '+ puerto)
+    console.log('Servidor corriendo en puerto ' + puerto)
 });
