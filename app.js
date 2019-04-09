@@ -7,26 +7,20 @@ const app = express();
 
 
 // Tell the app to parse the body of the request
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-
-
+app.use(bodyParser.urlencoded({ extended: false}))
+app.use(bodyParser.json())
 
 /*
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
-app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', "*");
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-
+app.use(function(req,res,next){
+    res.header('Access-Control-Allow-Origin',"*");
+    res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Acess-Control-Allow-Headers', 'Content-Type');
     next();
-});
+})
 */
 
 
-module.exports = app;
+
 
 /*
 app.use(function(req,res,next){
@@ -39,10 +33,10 @@ app.use(function(req,res,next){
 
 /*
 console.log('entro a cors?');
-*/
+
 // Setting up the cors config
 app.use(cors({
-  origin: ['http://maestriacc.fi.uncoma.edu.ar:3000/titulo/formulario', 'http://maestriacc.fi.uncoma.edu.ar:3000', 'http://localhost:3000', 'http://localhost:4200'],
+  origin: ['http://maestriacc.fi.uncoma.edu.ar:3004/titulo/formulario', 'http://maestriacc.fi.uncoma.edu.ar:3004', 'http://localhost:3000', 'http://localhost:4200'],
   methods : ['GET', 'POST', 'OPTIONS'],
   credentials:true
 }));
@@ -51,25 +45,26 @@ console.log('despues de cors');
 
 
 /* solucion a problema de cors que resulto por poco tiempo */
-/*
+
 
 app.use(cors({
-  origin: ['http://maestriacc.fi.uncoma.edu.ar', 'http://maestriacc.fi.uncoma.edu.ar:3000', 'http://localhost:3000'],
+  origin: ['http://maestriacc.fi.uncoma.edu.ar', 'http://maestriacc.fi.uncoma.edu.ar:3004', 'http://localhost:3000'],
   credentials:true
 }));
-*/
+
 /* otra posible solucion*/
 
 // Add headers
 /*
 app.use(bodyParser.json())
 app.use(function(req,res,next){
-  res.header('Access-Control-Allow-Origin','http://maestriacc.fi.uncoma.edu.ar', 'http://maestriacc.fi.uncoma.edu.ar:3000', 'http://localhost:3000', 'http://localhost:4200');
+  res.header('Access-Control-Allow-Origin','http://maestriacc.fi.uncoma.edu.ar', 'http://maestriacc.fi.uncoma.edu.ar:3004', 'http://localhost:3000', 'http://localhost:4200');
   res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
 })
 */
+
 
 app.post('/formularionuevo/formulario', (req, res) => {
     configMensaje(req.body);
@@ -134,3 +129,5 @@ const puerto = '3000';
 app.listen(puerto, () => {
     console.log('Servidor corriendo en puerto ' + puerto)
 });
+
+module.exports = app;
