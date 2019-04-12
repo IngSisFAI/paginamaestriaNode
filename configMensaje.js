@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-module.exports = (formulario) => {
+module.exports = (formularionuevo) => {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -9,28 +9,39 @@ module.exports = (formulario) => {
         }
     });
 
-    const mailOptions = {
-        cc: 'leonardoperello96@gmail.com',
-        to: `"${formulario.email}"`,
+    const mailDeConfirmacionARemitente = {
         from: 'leonardoperello96@gmail.com', // Cambia esta parte por el destinatario
+        to: `"${formularionuevo.email}"`,
+        subject: "Inscripción o consulta",
+        html: `Su inscripción se envió correctamente`
+    };
+
+    const mailConInfoADestinatario = {
+        from: 'leonardoperello96@gmail.com', // Cambia esta parte por el destinatario
+        to: 'leonardoperello96@gmail.com',
         subject: "Inscripción o consulta",
         html: ` 
     <strong>NO responder a este email<br/>
     <br><br/>
-    <strong>Nombre:</strong> ${formulario.nombre} <br/>
-    <strong>Apellido:</strong> ${formulario.apellido}  <br/>
-    <strong>E-mail:</strong> ${formulario.email}  <br/>
-    <strong>Mensaje:</strong> ${formulario.mensaje} <br/>
-    <strong>Dni:</strong> ${formulario.doc}  <br/>
-    <strong>Telefono:</strong> ${formulario.numero}  <br/>
-    <strong>Genero:</strong> ${formulario.gender}  <br/>
-    <strong>Nacionalidad:</strong> ${formulario.nacionalidad}<br/>
-    <strong>Nombre de su carrera:</strong> ${formulario.carrera}<br/>
-     <strong>Nombre de su universidad:</strong> ${formulario.universidad}
+    <strong>Nombre:</strong> ${formularionuevo.nombre} <br/>
+    <strong>Apellido:</strong> ${formularionuevo.apellido}  <br/>
+    <strong>E-mail:</strong> ${formularionuevo.email}  <br/>
+    <strong>Dni:</strong> ${formularionuevo.doc}  <br/>
+    <strong>Telefono:</strong> ${formularionuevo.numero}  <br/>
+    <strong>Genero:</strong> ${formularionuevo.gender}  <br/>
+    <strong>Nacionalidad:</strong> ${formularionuevo.nacionalidad}<br/>
+    <strong>Nombre de su carrera:</strong> ${formularionuevo.carrera}<br/>
+    <strong>Nombre de su universidad:</strong> ${formularionuevo.universidad}
     `
     };
 
-    transporter.sendMail(mailOptions, function (err, info) {
+    transporter.sendMail(mailDeConfirmacionARemitente, function (err, info) {
+        if (err)
+            console.log(err)
+        else
+            console.log(info);
+    });
+    transporter.sendMail(mailConInfoADestinatario, function (err, info) {
         if (err)
             console.log(err)
         else
