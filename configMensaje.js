@@ -26,6 +26,7 @@ module.exports = (formularionuevo) => {
     <strong>Nombre:</strong> ${formularionuevo.nombre} <br/>
     <strong>Apellido:</strong> ${formularionuevo.apellido}  <br/>
     <strong>E-mail:</strong> ${formularionuevo.email}  <br/>
+    <strong>Mensaje:</strong> ${formularionuevo.mensaje} <br>
     <strong>Dni:</strong> ${formularionuevo.doc}  <br/>
     <strong>Telefono:</strong> ${formularionuevo.numero}  <br/>
     <strong>Genero:</strong> ${formularionuevo.gender}  <br/>
