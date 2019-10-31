@@ -4,21 +4,21 @@ module.exports = (formularionuevo) => {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'leonardoperello96@gmail.com', // Cambialo por tu email
-            pass: '39403751' // Cambialo por tu password
+            user: 'pagina.maestria@fi.uncoma.edu.ar', // Cambialo por tu email
+            pass: 'Pgn.maest.3490' // Cambialo por tu password
         }
     });
 
     const mailDeConfirmacionARemitente = {
-        from: 'leonardoperello96@gmail.com', // Cambia esta parte por el destinatario
+        from: 'pagina.maestria@fi.uncoma.edu.ar', // Cambia esta parte por el destinatario
         to: `"${formularionuevo.email}"`,
         subject: "Inscripción o consulta",
         html: `Su inscripción se envió correctamente`
     };
 
     const mailConInfoADestinatario = {
-        from: 'leonardoperello96@gmail.com', // Cambia esta parte por el destinatario
-        to: 'leonardoperello96@gmail.com',
+        from: 'pagina.maestria@fi.uncoma.edu.ar', // Cambia esta parte por el destinatario
+        to: 'pagina.maestria@fi.uncoma.edu.ar',
         subject: "Inscripción o consulta",
         html: ` 
     <strong>NO responder a este email<br/>

@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 
 app.use(cors({
-    origin: ['http://maestriacc.fi.uncoma.edu.ar', 'http://maestriacc.fi.uncoma.edu.ar:3004', 'http://localhost:3000', 'http://localhost:4200'],
+    origin: ['http://maestriacc.fi.uncoma.edu.ar', 'http://maestriacc.fi.uncoma.edu.ar:3004', 'http://localhost:4200'],
     credentials:true
 }));
 
