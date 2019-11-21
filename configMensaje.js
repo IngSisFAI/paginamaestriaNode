@@ -1,11 +1,21 @@
 const nodemailer = require('nodemailer');
 
+
+
+
 module.exports = (formularionuevo) => {
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        debug: true,
+        logger: true,
+        tls: {
+            rejectUnauthorized: false
+        },
         auth: {
             user: 'pagina.maestria@fi.uncoma.edu.ar', // Cambialo por tu email
-            pass: 'Pgn.maest.3490' // Cambialo por tu password
+            pass: 'XXXXX' // Cambialo por tu password
         }
     });
 
