@@ -10,6 +10,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
+/*probando */
 
 app.use(cors({
     origin: ['http://maestriacc.fi.uncoma.edu.ar', 'http://maestriacc.fi.uncoma.edu.ar:3004', 'http://localhost:4200'],
